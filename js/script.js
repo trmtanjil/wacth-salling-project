@@ -58,3 +58,24 @@ btn.addEventListener('click',function(event){
   quantitys.innerText= newQuantity;
 })  
 }
+
+
+// add to card sectio 
+let sum = 0;
+document.getElementById('add-to-cart').addEventListener('click',function(){
+ 
+  // add value 
+  const quantitys = parseInt(document.getElementById('quantity').innerText)
+  if(quantitys>0){
+    document.getElementById('checkout-container').classList.remove('hidden')
+    sum = sum + quantitys;
+    document.getElementById('cart-count').innerText = sum;
+    return;
+  }
+  else{
+    alert("enter quantity")
+  }
+
+ 
+
+})
