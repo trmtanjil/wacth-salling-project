@@ -92,9 +92,7 @@ document.getElementById('add-to-cart').addEventListener('click',function(){
       quantity: quantitys,
       price: quantitys*parseInt(selectedPrize),
 
-    })
-    console.log(cartItem);
-    
+    })  
 
     // const selectSize = selectedColorButton.id.split('-')[0];
   }
@@ -126,7 +124,7 @@ document.getElementById('checkout-btn').addEventListener('click', function(){
     <td class="py-2 px-4 ">${item.color}</td>
     <td class="py-2 px-4 ">${item.size}</td>
     <td class="py-2 px-8 ">${item.quantity}</td>
-    <td class="py-2 px-4 ">${item.price}</td>
+    <td class="py-2 px-4 ">$${item.price}</td>
     `;
       
       cardModel.classList.remove('hidden');
@@ -134,3 +132,12 @@ document.getElementById('checkout-btn').addEventListener('click', function(){
   }
  
 });
+
+document.getElementById('continue-shopping').addEventListener('click', function(){
+  document.getElementById('cart-modal').classList.add('hidden');
+  console.log('clj');
+})
+
+document.getElementById('checkout').addEventListener('click',function(){
+  alert('keep yuor  shoping')
+})
