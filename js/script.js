@@ -1,4 +1,5 @@
 const ringButton =document.querySelectorAll('.ring-button');
+let productImegbase = "../images/";
 
 for(let i=0; i<ringButton.length; i++){
   const ringbtn = ringButton[i];
@@ -19,7 +20,7 @@ for(let i=0; i<ringButton.length; i++){
     // imege section
     const productImg=  document.getElementById('product-image');
     // productImg.src = "../images/teal.png";
-    productImg.src= "../images/" + colorimg + ".png";
+    productImg.src= productImegbase + colorimg + ".png";
 
     
   })
@@ -85,10 +86,11 @@ document.getElementById('add-to-cart').addEventListener('click',function(){
     // const productImg=  document.getElementById('product-image');
     cartItem.push({
       Image: selectColor + '.png',
-      this: 'Classy Modern Smart Watch',
+      title: 'Classy Modern Smart Watch',
       color: selectColor,
       size: selecSize,
-      price: quantitys*parseInt(selectedPrize)
+      quantity: quantitys,
+      price: quantitys*parseInt(selectedPrize),
 
     })
     console.log(cartItem);
@@ -100,3 +102,35 @@ document.getElementById('add-to-cart').addEventListener('click',function(){
     alert("enter quantity")
   }
 })
+
+
+// checout section 
+
+document.getElementById('checkout-btn').addEventListener('click', function(){
+  const cardModel  = document.getElementById('cart-modal');
+  
+  const cardContainer = document.getElementById('cart-items');
+  for(let i = 0; i<cartItem.length; i++){
+    const item = cartItem[i];
+    const row = document.createElement('tr');
+    row.classList.add('border-b')
+      
+    row.innerHTML=`
+    <td class=" " >
+    <div class="flex items-center space-x-2">
+    <img class="h-12 py-1 rounded-md" src="${productImegbase}${item.Image}" alt="">
+    <span class="font-semibold">${item.title}</span>
+    </div>
+    
+    </td>
+    <td class="py-2 px-4 ">${item.color}</td>
+    <td class="py-2 px-4 ">${item.size}</td>
+    <td class="py-2 px-8 ">${item.quantity}</td>
+    <td class="py-2 px-4 ">${item.price}</td>
+    `;
+      
+      cardModel.classList.remove('hidden');
+      cardContainer.appendChild(row)
+  }
+ 
+});
